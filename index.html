@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesus Romero Store</title>
+    <link rel="stylesheet" href="stile.css">
+</head>
+<body>
+
+    <header>
+        <h1>Jesus Romero Store</h1>
+        <div class="cart-icon" onclick="toggleCarrito()">
+            🛒 Carrito (<span id="cart-count">0</span>)
+        </div>
+    </header>
+
+    <!-- Barra de Filtro por Categorías -->
+    <nav class="categories-bar">
+        <button class="category-btn active" onclick="filtrarCategoria('todos', this)">Todos</button>
+        <button class="category-btn" onclick="filtrarCategoria('videojuegos', this)">Videojuegos</button>
+        <button class="category-btn" onclick="filtrarCategoria('calzado', this)">Calzado</button>
+        <button class="category-btn" onclick="filtrarCategoria('ropa', this)">Ropa</button>
+        <button class="category-btn" onclick="filtrarCategoria('accesorios', this)">Accesorios</button>
+    </nav>
+
+    <main class="products-grid">
+        <!-- VIDEOJUEGOS -->
+        <div class="product-card" data-category="videojuegos">
+            <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400" alt="Juego PS5">
+            <h3>Juego PS5 - Spider-Man</h3>
+            <p class="category">Videojuegos</p>
+            <p class="price">$60.00</p>
+            <button onclick="agregarAlCarrito('Juego PS5 - Spider-Man', 60)">Agregar al Carrito</button>
+        </div>
+
+        <!-- CALZADO -->
+        <div class="product-card" data-category="calzado">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Zapatillas">
+            <h3>Zapatillas Deportivas</h3>
+            <p class="category">Calzado</p>
+            <p class="price">$45.00</p>
+            <button onclick="agregarAlCarrito('Zapatillas Deportivas', 45)">Agregar al Carrito</button>
+        </div>
+
+        <!-- ROPA -->
+        <div class="product-card" data-category="ropa">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400" alt="Franela">
+            <h3>Franela Algodón Negra</h3>
+            <p class="category">Ropa</p>
+            <p class="price">$15.00</p>
+            <button onclick="agregarAlCarrito('Franela Algodón Negra', 15)">Agregar al Carrito</button>
+        </div>
+
+        <!-- ACCESORIOS -->
+        <div class="product-card" data-category="accesorios">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="Reloj">
+            <h3>Reloj Casual Hombre</h3>
+            <p class="category">Accesorios</p>
+            <p class="price">$30.00</p>
+            <button onclick="agregarAlCarrito('Reloj Casual Hombre', 30)">Agregar al Carrito</button>
+        </div>
+    </main>
+
+    <!-- Modal del Carrito -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <span class="close-btn" onclick="toggleCarrito()">&times;</span>
+            <h2>Tu Carrito</h2>
+            <ul id="cart-items"></ul>
+            <p class="total">Total: $<span id="cart-total">0.00</span></p>
+            <button class="whatsapp-btn" onclick="enviarWhatsApp()">Consultar Disponibilidad por WhatsApp 💬</button>
+        </div>
+    </div>
+
+    <script src="Hola.js"></script>
+</body>
+</html>
