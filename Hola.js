@@ -4,56 +4,91 @@ var NUMERO_WHATSAPP = "584120000000";
 function agregarAlCarrito(nombre, precio) {
     carrito.push({ nombre: nombre, precio: precio });
     actualizarCarritoUI();
+    
+    var sidebar = document.getElementById("cart-sidebar");
+    var overlay = document.getElementById("overlay");
+    if (sidebar && overlay) {
+        sidebar.classList.add("open");
+        overlay.classList.add("active");
+    }
 }
 
 function actualizarCarritoUI() {
-    document.getElementById("cart-count").innerText = carrito.length;
-
-    var cartItemsList = document.getElementById("cart-items");
-    cartItemsList.innerHTML = "";
-
-    var total = 0;
-    for (var i = 0; i < carrito.length; i++) {
-        var producto = carrito[i];
-        total = total + producto.precio;
-        
-        var li = document.createElement("li");
-        li.innerText = producto.nombre + " - $" + producto.precio.toFixed(2);
-        cartItemsList.appendChild(li);
+    var countElem = document.getElementById("cart-count");
+    if (countElem) {
+        countElem.innerText = carrito.length;
     }
 
-    document.getElementById("cart-total").innerText = total.toFixed(2);
+    var cartItemsList = document.getElementById("cart-items");
+    if (cartItemsList) {
+        cartItemsList.innerHTML = "";
+        var total = 0;
+        
+        for (var i = 0; i < carrito.length; i++) {
+            var producto = carrito[i];
+            total += producto.precio;
+            
+            var li = document.createElement("li");
+            li.innerHTML = "<span>" + producto.nombre + "</span> <strong>$" + producto.precio.toFixed(2) + "</strong>";
+            cartItemsList.appendChild(li);
+        }
+
+        var totalElem = document.getElementById("cart-total");
+        if (totalElem) {
+            totalElem.innerText = total.toFixed(2);
+        }
+    }
 }
 
 function toggleCarrito() {
-    var modal = document.getElementById("cart-modal");
-    if (modal.style.display === "flex") {
-        modal.style.display = "none";
-    } else {
-        modal.style.display = "flex";
+    var sidebar = document.getElementById("cart-sidebar");
+    var overlay = document.getElementById("overlay");
+    if (sidebar && overlay) {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("active");
     }
 }
 
+// FUNCIÓN DE FILTRADO DE CATEGORÍAS ROBUSTA Y CORREGIDA
 function filtrarCategoria(categoria, botonSeleccionado) {
     var productos = document.querySelectorAll(".product-card");
     var botones = document.querySelectorAll(".category-btn");
 
-    // Quitar la clase active de todos los botones
+    // Limpiar clase 'active' de todos los botones
     for (var j = 0; j < botones.length; j++) {
         botones[j].classList.remove("active");
     }
 
-    // Marcar el botón presionado
+    // Activar el botón presionado
     if (botonSeleccionado) {
         botonSeleccionado.classList.add("active");
+    } else if (window.event && window.event.target) {
+        window.event.target.classList.add("active");
     }
 
-    // Filtrar productos agregando o quitando la clase 'hidden'
+    // Mostrar u ocultar productos según la categoría seleccionada
     for (var i = 0; i < productos.length; i++) {
         var prod = productos[i];
         var catProducto = prod.getAttribute("data-category");
 
         if (categoria === "todos" || catProducto === categoria) {
+            prod.classList.remove("hidden");
+        } else {
+            prod.classList.add("hidden");
+        }
+    }
+}
+
+// FUNCIÓN DE BÚSQUEDA EN TIEMPO REAL
+function buscarProducto() {
+    var input = document.getElementById("search-input").value.toLowerCase();
+    var productos = document.querySelectorAll(".product-card");
+
+    for (var i = 0; i < productos.length; i++) {
+        var prod = productos[i];
+        var titulo = prod.querySelector("h3").innerText.toLowerCase();
+
+        if (titulo.includes(input)) {
             prod.classList.remove("hidden");
         } else {
             prod.classList.add("hidden");
@@ -72,13 +107,12 @@ function enviarWhatsApp() {
 
     for (var i = 0; i < carrito.length; i++) {
         var producto = carrito[i];
-        mensaje = mensaje + (i + 1) + ". " + producto.nombre + " - $" + producto.precio.toFixed(2) + "\n";
-        total = total + producto.precio;
+        mensaje += (i + 1) + ". " + producto.nombre + " - $" + producto.precio.toFixed(2) + "\n";
+        total += producto.precio;
     }
 
-    mensaje = mensaje + "\nMonto Total Estimado: $" + total.toFixed(2) + "\n\n¿Tienen disponibilidad de estos artículos?";
+    mensaje += "\nMonto Total Estimado: $" + total.toFixed(2) + "\n\n¿Tienen disponibilidad de estos artículos?";
 
     var url = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(mensaje);
-    
     window.open(url, "_blank");
 }
