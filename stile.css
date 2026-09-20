@@ -326,3 +326,136 @@ Body {
     Display: block;
 }
 
+Emanuel Lara, [19/9/26 11:44 P. M.]
+/* REGLA OBLIGATORIA PARA OCULTAR PRODUCTOS FILTRADOS */
+.product-card.hidden {
+    display: none !important;
+}
+
+/* ==========================================
+CONFIGURACIÓN RESPONSIVA Y MULTI-DISPOSITIVO
+========================================== */
+/* 1. Reset Global y Layout Base */
+{
+box-sizing: border-box;
+-webkit-tap-highlight-color: transparent; /* Mejora la experiencia en táctil */
+}
+body {
+overflow-x: hidden; /* Evita el scroll horizontal en móviles */
+margin: 0;
+padding: 0;
+}
+/* Regla indispensable para el filtrado dinámico */
+.product-card.hidden {
+display: none !important;
+}
+/* Imágen flexible por defecto */
+img {
+max-width: 100%;
+height: auto;
+display: block;
+}
+/* 2. Dispositivos Móviles (Teléfonos Android e iPhone en vertical: <= 576px) /
+@media screen and (max-width: 576px) {
+/ Encabezado y Navegación */
+header {
+padding: 12px 15px;
+flex-direction: column;
+gap: 10px;
+align-items: stretch;
+}
+.logo-container {
+justify-content: center;
+text-align: center;
+}
+.logo-container h1 {
+font-size: 1.4rem;
+}
+/* Buscador adaptado a pantalla completa */
+.search-box {
+width: 100%;
+}
+.search-box input {
+width: 100%;
+font-size: 14px;
+padding: 10px 14px 10px 38px;
+}
+/* Botones de Categorías con scroll horizontal suave /
+.categories-container {
+display: flex;
+overflow-x: auto;
+white-space: nowrap;
+padding: 10px 5px;
+gap: 8px;
+-webkit-overflow-scrolling: touch; / Scroll fluido en iOS/iPhone /
+scrollbar-width: none; / Oculta barra en Firefox */
+}
+.categories-container::-webkit-scrollbar {
+display: none; /* Oculta barra en Chrome/Safari */
+}
+.category-btn {
+flex: 0 0 auto;
+font-size: 13px;
+padding: 8px 14px;
+border-radius: 20px;
+}
+/* Catálogo en 1 o 2 columnas según pantalla pequeña */
+.products-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+gap: 12px;
+padding: 10px;
+}
+.product-card {
+border-radius: 10px;
+}
+.product-card .card-content {
+padding: 10px;
+}
+.product-card h3 {
+font-size: 0.95rem;
+line-height: 1.2;
+}
+.product-card .price {
+font-size: 1rem;
+}
+/* Carrito / Sidebar Modal en pantalla completa */
+.cart-sidebar {
+width: 100% !important;
+right: -100%;
+}
+.cart-sidebar.open {
+right: 0;
+}
+}
+/* 3. Tablets y Dispositivos Medianos (577px a 992px) */
+@media screen and (min-width: 577px) and (max-width: 992px) {
+header {
+padding: 15px 25px;
+}
+.products-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap: 18px;
+padding: 20px;
+}
+.cart-sidebar {
+width: 380px;
+}
+}
+/* 4. Escritorios y Pantallas Grandes (PC / Laptops: >= 993px) */
+@media screen and (min-width: 993px) {
+.container {
+max-width: 1200px;
+margin: 0 auto;
+}
+.products-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+gap: 24px;
+padding: 25px 0;
+}
+.cart-sidebar {
+width: 420px;
+}
+}
