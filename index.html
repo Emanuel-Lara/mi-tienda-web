@@ -3,75 +3,957 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jesus Romero Store</title>
+    <title>Jesus Romero Store | Tienda Virtual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stile.css">
 </head>
 <body>
 
-    <header>
-        <h1>Jesus Romero Store</h1>
-        <div class="cart-icon" onclick="toggleCarrito()">
-            🛒 Carrito (<span id="cart-count">0</span>)
+    <!-- Banner Anuncio Divisas -->
+    <div class="announcement-banner">
+        <span>📢 ATENCIÓN:</span> Todos los precios están expresados en divisas ($ USD).
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <h1>Jesus Romero <span>Store</span></h1>
+        </div>
+        <div class="cart-btn" onclick="toggleCarrito()">
+            🛒 Carrito <span id="cart-count">0</span>
         </div>
     </header>
 
-    <!-- Barra de Filtro por Categorías -->
-    <nav class="categories-bar">
-        <button class="category-btn active" onclick="filtrarCategoria('todos', this)">Todos</button>
-        <button class="category-btn" onclick="filtrarCategoria('videojuegos', this)">Videojuegos</button>
-        <button class="category-btn" onclick="filtrarCategoria('calzado', this)">Calzado</button>
-        <button class="category-btn" onclick="filtrarCategoria('ropa', this)">Ropa</button>
-        <button class="category-btn" onclick="filtrarCategoria('accesorios', this)">Accesorios</button>
-    </nav>
+    <!-- Buscador y Filtros -->
+    <section class="controls-section">
+        <div class="search-box">
+            <input type="text" id="search-input" onkeyup="buscarProducto()" placeholder="🔍 Buscar videojuego o artículo...">
+        </div>
+        <nav class="categories-bar">
+            <button class="category-btn active" onclick="filtrarCategoria('todos', this)">Todos</button>
+            <button class="category-btn" onclick="filtrarCategoria('ps4', this)">PlayStation 4</button>
+            <button class="category-btn" onclick="filtrarCategoria('ps5', this)">PlayStation 5</button>
+            <button class="category-btn" onclick="filtrarCategoria('switch', this)">Nintendo Switch</button>
+            <button class="category-btn" onclick="filtrarCategoria('articulos', this)">Artículos de Consola</button>
+            <button class="category-btn" onclick="filtrarCategoria('relojes', this)">Relojes</button>
+        </nav>
+    </section>
 
+    <!-- Grilla de Productos -->
     <main class="products-grid">
-        <!-- VIDEOJUEGOS -->
-        <div class="product-card" data-category="videojuegos">
-            <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400" alt="Juego PS5">
-            <h3>Juego PS5 - Spider-Man</h3>
-            <p class="category">Videojuegos</p>
-            <p class="price">$60.00</p>
-            <button onclick="agregarAlCarrito('Juego PS5 - Spider-Man', 60)">Agregar al Carrito</button>
+        
+        <!-- ================= PLAYSTATION 4 (42 JUEGOS) ================= -->
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400" alt="God of War Ragnarok PS4">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>God of War Ragnarok (Estuche Rojo)</h3>
+                <p class="price">$23.00</p>
+                <button onclick="agregarAlCarrito('God of War Ragnarok PS4 (Estuche Rojo)', 23)">Añadir al Carrito</button>
+            </div>
         </div>
 
-        <!-- CALZADO -->
-        <div class="product-card" data-category="calzado">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Zapatillas">
-            <h3>Zapatillas Deportivas</h3>
-            <p class="category">Calzado</p>
-            <p class="price">$45.00</p>
-            <button onclick="agregarAlCarrito('Zapatillas Deportivas', 45)">Agregar al Carrito</button>
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1507457379470-08b800bebc67?w=400" alt="God of War PS4 Hits">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>God of War (Estuche Rojo)</h3>
+                <p class="price">$23.00</p>
+                <button onclick="agregarAlCarrito('God of War PS4 (Estuche Rojo)', 23)">Añadir al Carrito</button>
+            </div>
         </div>
 
-        <!-- ROPA -->
-        <div class="product-card" data-category="ropa">
-            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400" alt="Franela">
-            <h3>Franela Algodón Negra</h3>
-            <p class="category">Ropa</p>
-            <p class="price">$15.00</p>
-            <button onclick="agregarAlCarrito('Franela Algodón Negra', 15)">Agregar al Carrito</button>
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400" alt="Death Stranding">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Death Stranding</h3>
+                <p class="price">$25.00</p>
+                <button onclick="agregarAlCarrito('Death Stranding', 25)">Añadir al Carrito</button>
+            </div>
         </div>
 
-        <!-- ACCESORIOS -->
-        <div class="product-card" data-category="accesorios">
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="Reloj">
-            <h3>Reloj Casual Hombre</h3>
-            <p class="category">Accesorios</p>
-            <p class="price">$30.00</p>
-            <button onclick="agregarAlCarrito('Reloj Casual Hombre', 30)">Agregar al Carrito</button>
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" alt="Call of Duty WWII">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Call of Duty WWII</h3>
+                <p class="price">$20.00</p>
+                <button onclick="agregarAlCarrito('Call of Duty WWII', 20)">Añadir al Carrito</button>
+            </div>
         </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400" alt="Watch Dogs Legion">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Watch Dogs Legion</h3>
+                <p class="price">$25.00</p>
+                <button onclick="agregarAlCarrito('Watch Dogs Legion PS4', 25)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400" alt="Uncharted The Lost Legacy">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Uncharted The Lost Legacy</h3>
+                <p class="price">$20.00</p>
+                <button onclick="agregarAlCarrito('Uncharted The Lost Legacy', 20)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400" alt="Dragon Ball Xenoverse">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Dragon Ball Xenoverse</h3>
+                <p class="price">$20.00</p>
+                <button onclick="agregarAlCarrito('Dragon Ball Xenoverse', 20)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" alt="Borderlands 3">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Borderlands 3</h3>
+                <p class="price">$15.00</p>
+                <button onclick="agregarAlCarrito('Borderlands 3', 15)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" alt="Call of Duty Modern Warfare">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Call of Duty Modern Warfare</h3>
+                <p class="price">$35.00</p>
+                <button onclick="agregarAlCarrito('Call of Duty Modern Warfare', 35)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400" alt="Jump Force">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Jump Force</h3>
+                <p class="price">$25.00</p>
+                <button onclick="agregarAlCarrito('Jump Force', 25)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?w=400" alt="Ghost of Tsushima">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Ghost of Tsushima</h3>
+                <p class="price">$33.00</p>
+                <button onclick="agregarAlCarrito('Ghost of Tsushima', 33)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400" alt="The Last of Us Part 2">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>The Last of Us Part 2</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('The Last of Us Part 2 PS4', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400" alt="The Last of Us Remastered">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>The Last of Us Remastered</h3>
+                <p class="price">$25.00</p>
+                <button onclick="agregarAlCarrito('The Last of Us Remastered', 25)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" alt="Assassin's Creed Odyssey">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Assassin's Creed Odyssey</h3>
+                <p class="price">$15.00</p>
+                <button onclick="agregarAlCarrito('Assassins Creed Odyssey', 15)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400" alt="Cyberpunk 2077">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Cyberpunk 2077</h3>
+                <p class="price">$29.00</p>
+                <button onclick="agregarAlCarrito('Cyberpunk 2077', 29)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" alt="Far Cry New Dawn">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Far Cry New Dawn</h3>
+                <p class="price">$10.00</p>
+                <button onclick="agregarAlCarrito('Far Cry New Dawn', 10)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" alt="Call of Duty Black Ops 3">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Call of Duty Black Ops 3</h3>
+                <p class="price">$15.00</p>
+                <button onclick="agregarAlCarrito('Call of Duty Black Ops 3', 15)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400" alt="Fallout 4">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Fallout 4</h3>
+                <p class="price">$25.00</p>
+                <button onclick="agregarAlCarrito('Fallout 4', 25)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" alt="Horizon Zero Dawn Complete Edition">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Horizon Zero Dawn Complete Edition</h3>
+                <p class="price">$20.00</p>
+                <button onclick="agregarAlCarrito('Horizon Zero Dawn Complete Edition', 20)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400" alt="Fallout 76">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Fallout 76</h3>
+                <p class="price">$20.00</p>
+                <button onclick="agregarAlCarrito('Fallout 76', 20)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" alt="Far Cry 6 PS4">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Far Cry 6</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Far Cry 6 PS4', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" alt="Mortal Kombat 11">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Mortal Kombat 11</h3>
+                <p class="price">$37.50</p>
+                <button onclick="agregarAlCarrito('Mortal Kombat 11 PS4', 37.50)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400" alt="Resident Evil 2 Remake">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Resident Evil 2 Remake</h3>
+                <p class="price">$28.50</p>
+                <button onclick="agregarAlCarrito('Resident Evil 2 Remake', 28.50)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400" alt="Resident Evil Biohazard">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Resident Evil 7 Biohazard</h3>
+                <p class="price">$28.00</p>
+                <button onclick="agregarAlCarrito('Resident Evil 7 Biohazard', 28)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400" alt="Resident Evil Village PS4">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Resident Evil Village</h3>
+                <p class="price">$28.00</p>
+                <button onclick="agregarAlCarrito('Resident Evil Village PS4', 28)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400" alt="Resident Evil 4 Remake PS4">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Resident Evil 4 Remake</h3>
+                <p class="price">$32.00</p>
+                <button onclick="agregarAlCarrito('Resident Evil 4 Remake PS4', 32)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400" alt="Grand Theft Auto V">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Grand Theft Auto V</h3>
+                <p class="price">$29.00</p>
+                <button onclick="agregarAlCarrito('Grand Theft Auto V PS4', 29)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?w=400" alt="Ratchet and Clank PS4">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Ratchet & Clank</h3>
+                <p class="price">$15.00</p>
+                <button onclick="agregarAlCarrito('Ratchet and Clank PS4', 15)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400" alt="Spider-Man Miles Morales PS4">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Spider-Man Miles Morales</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Spider-Man Miles Morales PS4', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400" alt="Marvel Spider-Man PS4">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Marvel's Spider-Man</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Marvel Spider-Man PS4', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400" alt="Naruto Ultimate Ninja Storm Trilogy">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Naruto Storm Trilogy</h3>
+                <p class="price">$20.00</p>
+                <button onclick="agregarAlCarrito('Naruto Storm Trilogy', 20)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400" alt="Dark Souls 3">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Dark Souls III</h3>
+                <p class="price">$25.00</p>
+                <button onclick="agregarAlCarrito('Dark Souls III', 25)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400" alt="Doom PS4">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>DOOM</h3>
+                <p class="price">$28.00</p>
+                <button onclick="agregarAlCarrito('DOOM PS4', 28)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400" alt="Doom Eternal">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>DOOM Eternal</h3>
+                <p class="price">$35.00</p>
+                <button onclick="agregarAlCarrito('DOOM Eternal', 35)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400" alt="The Last of Us Remastered Hits">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>The Last of Us Remastered (Estuche Rojo)</h3>
+                <p class="price">$25.00</p>
+                <button onclick="agregarAlCarrito('The Last of Us Remastered (Estuche Rojo)', 25)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400" alt="God of War Ragnarok Standard PS4">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>God of War Ragnarok</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('God of War Ragnarok PS4', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" alt="Star Wars Battlefront 2">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Star Wars Battlefront II</h3>
+                <p class="price">$10.00</p>
+                <button onclick="agregarAlCarrito('Star Wars Battlefront II', 10)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400" alt="Naruto to Boruto Shinobi Striker">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Naruto to Boruto: Shinobi Striker</h3>
+                <p class="price">$25.00</p>
+                <button onclick="agregarAlCarrito('Naruto to Boruto Shinobi Striker', 25)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=400" alt="Sonic Forces">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Sonic Forces</h3>
+                <p class="price">$19.00</p>
+                <button onclick="agregarAlCarrito('Sonic Forces', 19)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400" alt="Uncharted 4 A Thief's End">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Uncharted 4: A Thief's End</h3>
+                <p class="price">$15.00</p>
+                <button onclick="agregarAlCarrito('Uncharted 4 A Thiefs End', 15)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps4">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400" alt="Need for Speed Rivals">
+                <span class="badge ps4-badge">PS4</span>
+            </div>
+            <div class="product-info">
+                <h3>Need for Speed Rivals</h3>
+                <p class="price">$20.00</p>
+                <button onclick="agregarAlCarrito('Need for Speed Rivals', 20)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <!-- ================= PLAYSTATION 5 (30 JUEGOS) ================= -->
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400" alt="Watch Dogs Legion PS5">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Watch Dogs Legion</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Watch Dogs Legion PS5', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" alt="Horizon Forbidden West">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Horizon Forbidden West</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Horizon Forbidden West', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400" alt="Hitman 3">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Hitman 3</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Hitman 3', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400" alt="Returnal">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Returnal</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Returnal', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" alt="Far Cry 6 PS5">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Far Cry 6</h3>
+                <p class="price">$40.00</p>
+                <button onclick="agregarAlCarrito('Far Cry 6 PS5', 40)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400" alt="Godfall">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Godfall</h3>
+                <p class="price">$25.00</p>
+                <button onclick="agregarAlCarrito('Godfall', 25)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=400" alt="EA Sports FC 24">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>EA Sports FC 24</h3>
+                <p class="price">$25.00</p>
+                <button onclick="agregarAlCarrito('EA Sports FC 24', 25)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400" alt="Marvel Avengers">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Marvel's Avengers</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Marvel Avengers', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400" alt="Uncharted Legacy Remaster">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Uncharted Legacy Remaster</h3>
+                <p class="price">$40.00</p>
+                <button onclick="agregarAlCarrito('Uncharted Legacy Remaster', 40)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?w=400" alt="Ratchet and Clank Rift Apart">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Ratchet & Clank: Rift Apart</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Ratchet and Clank Rift Apart', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400" alt="Gotham Knights">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Gotham Knights</h3>
+                <p class="price">$35.00</p>
+                <button onclick="agregarAlCarrito('Gotham Knights', 35)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400" alt="Need for Speed Unbound">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Need for Speed Unbound</h3>
+                <p class="price">$28.00</p>
+                <button onclick="agregarAlCarrito('Need for Speed Unbound', 28)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=400" alt="Guardianes de la Galaxia">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Guardianes de la Galaxia</h3>
+                <p class="price">$35.00</p>
+                <button onclick="agregarAlCarrito('Guardianes de la Galaxia', 35)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400" alt="Resident Evil 4 PS5">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Resident Evil 4 Remake</h3>
+                <p class="price">$32.00</p>
+                <button onclick="agregarAlCarrito('Resident Evil 4 PS5', 32)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=400" alt="Nioh Collection">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Nioh Collection</h3>
+                <p class="price">$35.00</p>
+                <button onclick="agregarAlCarrito('Nioh Collection', 35)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" alt="Mortal Kombat Ultimate 2">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Mortal Kombat Ultimate 2</h3>
+                <p class="price">$46.50</p>
+                <button onclick="agregarAlCarrito('Mortal Kombat Ultimate 2', 46.50)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400" alt="The Last of Us Part 2 Remaster">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>The Last of Us Part 2 Remaster</h3>
+                <p class="price">$45.00</p>
+                <button onclick="agregarAlCarrito('The Last of Us Part 2 Remaster', 45)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400" alt="The Last of Us Part 1">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>The Last of Us Part 1</h3>
+                <p class="price">$40.00</p>
+                <button onclick="agregarAlCarrito('The Last of Us Part 1', 40)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400" alt="God of War Ragnarok PS5">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>God of War Ragnarok</h3>
+                <p class="price">$50.00</p>
+                <button onclick="agregarAlCarrito('God of War Ragnarok PS5', 50)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400" alt="Tekken 8">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Tekken 8</h3>
+                <p class="price">$45.00</p>
+                <button onclick="agregarAlCarrito('Tekken 8', 45)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" alt="Assassin's Creed Valhalla">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Assassin's Creed Valhalla</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Assassins Creed Valhalla', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?w=400" alt="Final Fantasy VII Reunion">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Final Fantasy VII Reunion</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Final Fantasy VII Reunion', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400" alt="Call of Duty Black Ops 7">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Call of Duty Black Ops 7</h3>
+                <p class="price">$40.00</p>
+                <button onclick="agregarAlCarrito('Call of Duty Black Ops 7', 40)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400" alt="Call of Duty Black Ops 6">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Call of Duty Black Ops 6</h3>
+                <p class="price">$40.00</p>
+                <button onclick="agregarAlCarrito('Call of Duty Black Ops 6', 40)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400" alt="Rainbow Six Siege Deluxe">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Rainbow Six Siege Deluxe</h3>
+                <p class="price">$25.00</p>
+                <button onclick="agregarAlCarrito('Rainbow Six Siege Deluxe', 25)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=400" alt="EA Sports FC 26">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>EA Sports FC 26</h3>
+                <p class="price">$40.00</p>
+                <button onclick="agregarAlCarrito('EA Sports FC 26', 40)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400" alt="Spider-Man Miles Morales Ultimate">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Spider-Man Miles Morales Ultimate</h3>
+                <p class="price">$33.00</p>
+                <button onclick="agregarAlCarrito('Spider-Man Miles Morales Ultimate', 33)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400" alt="Resident Evil Village PS5">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Resident Evil Village</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Resident Evil Village PS5', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400" alt="Battlefield 2042">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Battlefield 2042</h3>
+                <p class="price">$35.00</p>
+                <button onclick="agregarAlCarrito('Battlefield 2042', 35)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="ps5">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400" alt="Dragon Ball Sparking Zero">
+                <span class="badge ps5-badge">PS5</span>
+            </div>
+            <div class="product-info">
+                <h3>Dragon Ball Sparking Zero</h3>
+                <p class="price">$40.00</p>
+                <button onclick="agregarAlCarrito('Dragon Ball Sparking Zero', 40)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <!-- ================= NINTENDO SWITCH ================= -->
+        <div class="product-card" data-category="switch">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=400" alt="Super Mario Odyssey">
+                <span class="badge switch-badge">Switch</span>
+            </div>
+            <div class="product-info">
+                <h3>Super Mario Odyssey</h3>
+                <p class="price">$45.00</p>
+                <button onclick="agregarAlCarrito('Super Mario Odyssey', 45)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <!-- ================= ARTÍCULOS ================= -->
+        <div class="product-card" data-category="articulos">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=400" alt="Control DualSense PS5">
+                <span class="badge gear-badge">Accesorio</span>
+            </div>
+            <div class="product-info">
+                <h3>Control DualSense PS5</h3>
+                <p class="price">$70.00</p>
+                <button onclick="agregarAlCarrito('Control DualSense PS5', 70)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <!-- ================= RELOJES ================= -->
+        <div class="product-card" data-category="relojes">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="Reloj Casual Hombre">
+                <span class="badge watch-badge">Reloj</span>
+            </div>
+            <div class="product-info">
+                <h3>Reloj Casual Hombre</h3>
+                <p class="price">$30.00</p>
+                <button onclick="agregarAlCarrito('Reloj Casual Hombre', 30)">Añadir al Carrito</button>
+            </div>
+        </div>
+
     </main>
 
-    <!-- Modal del Carrito -->
-    <div id="cart-modal" class="cart-modal">
-        <div class="cart-content">
-            <span class="close-btn" onclick="toggleCarrito()">&times;</span>
+    <!-- Carrito Lateral Deslizante -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
             <h2>Tu Carrito</h2>
+            <span class="close-btn" onclick="toggleCarrito()">&times;</span>
+        </div>
+        <div class="cart-body">
             <ul id="cart-items"></ul>
+        </div>
+        <div class="cart-footer">
             <p class="total">Total: $<span id="cart-total">0.00</span></p>
-            <button class="whatsapp-btn" onclick="enviarWhatsApp()">Consultar Disponibilidad por WhatsApp 💬</button>
+            <button class="whatsapp-btn" onclick="enviarWhatsApp()">
+                Pedir por WhatsApp 💬
+            </button>
         </div>
     </div>
+    <div id="overlay" class="overlay" onclick="toggleCarrito()"></div>
 
     <script src="Hola.js"></script>
 </body>
