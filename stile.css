@@ -326,7 +326,6 @@ Body {
     Display: block;
 }
 
-Emanuel Lara, [19/9/26 11:44 P. M.]
 /* REGLA OBLIGATORIA PARA OCULTAR PRODUCTOS FILTRADOS */
 .product-card.hidden {
     display: none !important;
