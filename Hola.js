@@ -1,5 +1,5 @@
 var carrito = [];
-var NUMERO_WHATSAPP = "584120000000"; // Reemplaza con tu número de teléfono de WhatsApp
+var NUMERO_WHATSAPP = "+584121656611"; // Reemplaza con tu número de teléfono de WhatsApp
 
 // 1. AÑADIR AL CARRITO (Sin abrir el panel automáticamente)
 function agregarAlCarrito(nombre, precio) {
